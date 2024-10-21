@@ -8,9 +8,9 @@ import Profile from './Profile';
 import About from './About';
 import ContactUs from './ContactUs';
 import PreferredGender from './PreferredGender';
-import SwipeCards from './SwipeCards';  // Import SwipeCards component
-import SavedUsers from './SavedUsers';  // Import SavedUsers component
-import Chat from './Chat';  // Import the Chat component
+import SwipeCards from './SwipeCards';  
+import SavedUsers from './SavedUsers';  
+import Chat from './Chat';  
 
 const App = () => {
   const [users, setUsers] = useState([]);  // Registered users
@@ -50,7 +50,7 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename="/app"> {/* Set the basename for GitHub Pages */}
       <div>
         <Routes>
           {/* Home route */}
@@ -72,17 +72,17 @@ const App = () => {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/preferredGender" element={<PreferredGender />} />
 
-          {/* SwipeCards route (pass handleSwipeRight to manage swiped profiles and registered users) */}
+          {/* SwipeCards route */}
           <Route 
             path="/swipeCards" 
             element={<SwipeCards onSwipeRight={handleSwipeRight} registeredUsers={users} />} 
           />
 
-          {/* SavedUsers route (pass saved users to display them) */}
+          {/* SavedUsers route */}
           <Route path="/savedUsers" element={<SavedUsers savedUsers={savedUsers} />} />
 
           {/* Chat route */}
-          <Route path="/chat" element={<Chat />} /> {/* New Chat route */}
+          <Route path="/chat" element={<Chat />} /> 
         </Routes>
       </div>
     </Router>
